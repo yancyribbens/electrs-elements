@@ -11,8 +11,9 @@ services:
     elementsd:
         container_name: 'elements'
         build:
-            context: ./elements.0.17.0
-            dockerfile: Dockerfile
+            context: .
+            args:
+                release: elements-0.18.1.1
         networks:
             app_net:
                 ipv4_address: 172.32.0.2
