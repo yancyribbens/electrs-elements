@@ -1,5 +1,6 @@
 FROM ubuntu:18.04
 ARG release=elements-0.18.1.1
+ARG chain=liquidregtest
 
 RUN apt-get update && apt-get install -y \
     wget && \
@@ -9,4 +10,4 @@ RUN apt-get update && apt-get install -y \
     cd $release && \
     ln -s /opt/$release/bin/elementsd /usr/bin/elementsd && \
     ln -s /opt/$release/bin/elements-cli /usr/bin/elements-cli && \
-    sed -i -e '$a alias ecli="elements-cli -chain=liquidregtest -rpcuser=elements -rpcpassword=elements"' /root/.bashrc
+    echo "alias ecli=\"elements-cli -chain=$chain -rpcuser=elements -rpcpassword=elements\"" >> /root/.bashrc
