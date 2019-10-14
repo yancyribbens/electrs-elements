@@ -11,3 +11,4 @@ RUN apt-get update && apt-get install -y \
     ln -s /opt/$release/bin/elementsd /usr/bin/elementsd && \
     ln -s /opt/$release/bin/elements-cli /usr/bin/elements-cli && \
     echo "alias ecli=\"elements-cli -chain=$chain -rpcuser=elements -rpcpassword=elements\"" >> /root/.bashrc
+COPY elements.conf /root/.elements/elements.conf
