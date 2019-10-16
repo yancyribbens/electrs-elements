@@ -9,4 +9,4 @@ RUN apt-get update && apt-get install -y \
     ln -s /opt/elements-0.17.0/bin/elementsd /usr/bin/elementsd && \
     ln -s /opt/elements-0.17.0/bin/elements-cli /usr/bin/elements-cli && \
     sed -i -e '$a alias ecli="elements-cli -chain=liquidregtest -rpcuser=elements -rpcpassword=elements"' /root/.bashrc
-
+COPY elements.conf /root/.elements/elements.conf
