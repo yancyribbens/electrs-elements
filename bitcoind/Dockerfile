@@ -2,13 +2,14 @@ FROM debian:stable-slim
 
 LABEL maintainer.0="yancy.ribbens@gmail.com"
 
+
 RUN useradd -r bitcoin \
   && apt-get update -y \
   && apt-get install -y curl gnupg gosu \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV BITCOIN_VERSION=0.19.0.1
+ENV BITCOIN_VERSION=0.17.1
 ENV BITCOIN_DATA=/home/bitcoin/.bitcoin
 ENV PATH=/opt/bitcoin-${BITCOIN_VERSION}/bin:$PATH
 
