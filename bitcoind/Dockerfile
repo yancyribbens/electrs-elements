@@ -30,6 +30,7 @@ RUN set -ex \
   && rm *.tar.gz *.asc
 
 COPY docker-entrypoint.sh /entrypoint.sh
+RUN chmod 777 ./entrypoint.sh
 
 VOLUME ["/home/bitcoin/.bitcoin"]
 
