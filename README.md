@@ -1,10 +1,14 @@
-# electrs with elements
+# electrs
 
-## Run
+## Run bitcoin
 
 `docker-compose up --build`
 
-## Call electrs APIs
+## Alternatively, run elements
+
+`docker-compose -f docker-compose.elements.yml up --build`
+
+## Call electrs using elements APIs
 
 1. connect elements container  
 `docker exec -it elements /bin/bash`
