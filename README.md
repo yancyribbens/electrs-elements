@@ -8,7 +8,7 @@
 
 `docker-compose -f docker-compose.elements.yml up --build`
 
-## Call electrs using elements APIs
+## Call electrs using APIs
 
 1. connect elements container  
 `docker exec -it elements /bin/bash`
