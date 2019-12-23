@@ -8,25 +8,30 @@ networks:
             config:
                 - subnet: 172.32.0.0/24
 services:
-    bitcoind:
-        container_name: 'bitcoind'
+    elementsd:
+        container_name: 'elements'
         build:
-            context: ./bitcoind
+            context: ./elements.0.17.0
             dockerfile: Dockerfile
         networks:
             app_net:
                 ipv4_address: 172.32.0.2
         ports:
-            - "127.0.0.1:18443:18443"
+            - "127.0.0.1:18444:18444"
+            - "127.0.0.1:7040:7040"
         command: >
-            bitcoind
-            -regtest
-            -rpcport=18443
-            -rpcallowip=0.0.0.0/0
-            -rpcbind=172.32.0.2:18443
-            -rpcbind=127.0.0.1:18443
-            -rpcuser=johnny
-            -rpcpassword=mnemonic
+            elementsd 
+            -chain=liquidregtest
+            -debug
+            -listenonion=0 
+            -server=1 
+            -rpcallowip=172.32.0.3
+            -rpcallowip=172.32.0.2
+            -rpcallowip=172.0.0.1
+            -rpcbind=0.0.0.0 
+            -rpcuser=elements 
+            -rpcpassword=elements 
+            -validatepegin=0
     electrs:
         container_name: 'electrs'
         build:
@@ -44,8 +49,9 @@ services:
             -vvvv
             --timestamp
             --jsonrpc-import
-            --network regtest
-            --cookie johnny:mnemonic
-            --daemon-rpc-addr 172.32.0.2:18443
+            --network liquidregtest
+            --cookie elements:elements
+            --daemon-rpc-addr 172.32.0.2:7040
             --electrum-rpc-addr 0.0.0.0:60401
             --http-addr 0.0.0.0:3002
+

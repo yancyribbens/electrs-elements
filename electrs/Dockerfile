@@ -6,4 +6,4 @@ RUN apt-get update && \
     git clone https://github.com/blockstream/electrs && \
     cd electrs && \
     git checkout new-index && \
-    cargo build --release --features liquid --bin electrs
+    cargo build --release --bin electrs
